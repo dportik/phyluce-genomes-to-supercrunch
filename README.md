@@ -5,7 +5,7 @@
 ## Overview
 
 `phyluce-genomes-to-supercrunch.py` is a python script that can be used to
-(i) combine the genome-extracted UCE sequences for multiple fasta files output by Phyluce,  
+(i) combine the genome-extracted UCE sequences for multiple fasta files output by Phyluce,
 and (ii) relabel the fasta records to a format that is similar to GenBank records.
 This format is compatible with [SuperCRUNCH](https://github.com/dportik/SuperCRUNCH) and 
 allows the UCE sequence data to be parsed into individual loci correctly. To work properly, 
@@ -21,7 +21,7 @@ install any additional Python packages or libraries, making it easy to use and e
 
 GNU Lesser General Public License v3.0
 
-## Explanation and Instructions for Usage
+## Explanation 
 
 In order to generate UCE sequences extracted from genomes, I followed the tutorial on the
 PHYLUCE documentation called: [Tutorial III: Harvesting UCE Loci From Genomes](https://phyluce.readthedocs.io/en/latest/tutorial-three.html)
@@ -119,4 +119,6 @@ In this way, it is very important that the input fasta files are labeled followi
 as illustrated in the example in Step 6. Notice also that the bases are automatically converted into uppercase.
 
 
+
+## Instructions for Usage
 
