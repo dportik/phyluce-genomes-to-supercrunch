@@ -59,21 +59,21 @@ def fasta_dict(f):
     return f_dict
 
 def write_fasta(d):
-	'''
-	Simple function to iterate over each fasta dictionary
-	and write the key, val pairs to the same output file.
-	'''
+    '''
+    Simple function to iterate over each fasta dictionary
+    and write the key, val pairs to the same output file.
+    '''
     outname = "Genome_UCE_Seqs.fasta"
     with open(outname, 'a') as fh:
         for key, val in d.iteritems():
             fh.write("{}\n{}\n".format(key, val))
 
 def run_tasks(in_dir, out_dir):
-	'''
-	Function to navigate to correct directories to
-	either find fasta files and convert to dictionary
-	structures or write the final output file.
-	'''
+    '''
+    Function to navigate to correct directories to
+    either find fasta files and convert to dictionary
+    structures or write the final output file.
+    '''
     os.chdir(in_dir)
     f_list = sorted([f for f in os.listdir('.') if f.endswith(".fasta") or f.endswith(".fa")])
     print "Found {} fasta files to process.".format(len(f_list))
