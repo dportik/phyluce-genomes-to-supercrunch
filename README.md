@@ -5,12 +5,11 @@
 ## Overview
 
 `phyluce-genomes-to-supercrunch.py` is a python script that can be used to
-combining the genome-extracted UCE sequences in multiple fasta files output by Phyluce, 
-and converting them into a fasta record labeling format that is similar to GenBank records.
+(i) combine the genome-extracted UCE sequences for multiple fasta files output by Phyluce,  
+and (ii) relabel the fasta records to a format that is similar to GenBank records.
 This format is compatible with [SuperCRUNCH](https://github.com/dportik/SuperCRUNCH) and 
-allows all UCE data to be parsed correctly using an appropriate locus search terms file 
-(such as tetrapod-5k). To work properly, the input fasta files (which come from Phyluce) 
-should be labeled with the following format: `Genus_species.fasta`.
+allows the UCE sequence data to be parsed into individual loci correctly. To work properly, 
+the input fasta files from Phyluce should be labeled with the following format: `Genus_species.fasta`.
 
 ## Installation
 
@@ -55,9 +54,9 @@ Inputs
 │	└── sizes.tab
 ```
 
-4. Run `phyluce_probe_run_multiple_lastzs_sqlite` from Phyluce to generate an SQL database, using the `uce-5k-probes.fasta` file.
+4. Running `phyluce_probe_run_multiple_lastzs_sqlite` from Phyluce to generate an SQL database, using the `uce-5k-probes.fasta` file.
 
-5. Run `phyluce_probe_slice_sequence_from_genomes` from Phyluce to extract UCE sequences into fasta files.
+5. Running `phyluce_probe_slice_sequence_from_genomes` from Phyluce to extract UCE sequences into fasta files.
 
 6. At the end, the output directory was populated with a relevant fasta file for each genome:
 
