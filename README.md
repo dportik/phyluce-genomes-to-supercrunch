@@ -23,6 +23,11 @@ GNU Lesser General Public License v3.0
 
 ## Explanation 
 
+To make use of this script, you will first need to extract UCE sequences from genomes using Phyluce. 
+Afterwards, you can use this script to reformat and relabel the output files to a fasta format compatible
+with the bioinformatics toolkit SuperCRUNCH. SuperCRUNCH can then be used to parse all the sequences into 
+unaligned UCE-specific fasta files, and subsequently filter and align sequences for each UCE locus.
+
 In order to generate UCE sequences extracted from genomes, I followed the tutorial on the
 PHYLUCE documentation called: [Tutorial III: Harvesting UCE Loci From Genomes](https://phyluce.readthedocs.io/en/latest/tutorial-three.html)
 
@@ -153,7 +158,7 @@ python phyluce-genomes-to-supercrunch.py -i bin/Analysis/Input-fasta-files -o bi
 ```
 
 
-#### Example Data
+## Example Data
 
 There are UCE sequences extracted from 21 genomes using Phyluce available in the [example-data folder](https://github.com/dportik/phyluce-genomes-to-supercrunch/tree/master/example-data),
 called `21-genome-extractions.zip`. The output of running this script for these 21 fasta files is also provided
