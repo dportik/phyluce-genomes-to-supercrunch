@@ -45,10 +45,10 @@ def fasta_dict(f):
     #iterate over lines and create fasta dictionary
     for line in lines:
         if line.startswith(">"):
-        	#find uce label in records formatted as such:
-        	#>Node_1_length_1120_cov_1000|contig:AKHW03000416.1|slice:16386850-16387970|uce:uce-507|match:16387350-16387470|orient:set(['+'])|probes:1
-        	#>Node_2_length_1120_cov_1000|contig:AKHW03006853.1|slice:14925567-14926687|uce:uce-211|match:14926067-14926187|orient:set(['+'])|probes:1
-        	#use list comprehension plus additional string split
+            #find uce label in records formatted as such:
+            #>Node_1_length_1120_cov_1000|contig:AKHW03000416.1|slice:16386850-16387970|uce:uce-507|match:16387350-16387470|orient:set(['+'])|probes:1
+            #>Node_2_length_1120_cov_1000|contig:AKHW03006853.1|slice:14925567-14926687|uce:uce-211|match:14926067-14926187|orient:set(['+'])|probes:1
+            #use list comprehension plus additional string split
             uce = [l for l in line.split("|")][3].split(':')[1]
             #create new description line that fits the general structure:
             #>GENOME_[taxon].[uce-label] [taxon] ultra conserved element [uce-label]
