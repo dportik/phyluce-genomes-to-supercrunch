@@ -40,19 +40,19 @@ Inputs
 │
 ├──Alligator_mississippiensis
 │	├── Alligator_mississippiensis.2bit
-│   └── sizes.tab
+│	└── sizes.tab
 │
 ├──Chrysemys_picta
 │	├── Chrysemys_picta.2bit
-│   └── sizes.tab
+│	└── sizes.tab
 │
 ├──Anolis_carolinensis
 │	├── Anolis_carolinensis.2bit
-│   └── sizes.tab
+│	└── sizes.tab
 │
 ├──Gekko_japonicus
 │	├── Gekko_japonicus.2bit
-│   └── sizes.tab
+│	└── sizes.tab
 ```
 
 4. Run `phyluce_probe_run_multiple_lastzs_sqlite` from Phyluce to generate an SQL database, using the `uce-5k-probes.fasta` file.
