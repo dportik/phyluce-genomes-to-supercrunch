@@ -51,8 +51,8 @@ def fasta_dict(f):
             #use list comprehension plus additional string split
             uce = [l for l in line.split("|")][3].split(':')[1]
             #create new description line that fits the general structure:
-            #>GENOME_[taxon].[uce-label] [taxon] ultra conserved element [uce-label]
-            new_key = ">GENOME_{0}.{1} {2} ultra conserved element {1}".format(taxon, uce, taxon.replace("_", " "))
+            #>GENOME_[taxon].[uce-label] [taxon] genome ultra conserved element [uce-label]
+            new_key = ">GENOME_{0}.{1} {2} genome ultra conserved element {1}".format(taxon, uce, taxon.replace("_", " "))
             f_dict[new_key] = ""
         else:
             f_dict[new_key] += line.upper()
