@@ -13,7 +13,7 @@ the input fasta files from Phyluce should be labeled with the following format: 
 
 ## Installation
 
-`phyluce-genomes-to-supercrunch.py` is written in Python (2.7) and functions as a stand-alone 
+`phyluce-genomes-to-supercrunch.py` is written in Python (compatible with  both 2.7 and 3.7) and functions as a stand-alone 
 command-line script. It can be downloaded and executed independently without the need to 
 install any additional Python packages or libraries, making it easy to use and edit.
 
