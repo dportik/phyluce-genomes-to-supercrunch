@@ -106,7 +106,7 @@ what is typically present in NCBI GenBank records, which generally contain:
 The general format of the description lines written by `phyluce-genomes-to-supercrunch.py` is:
 
 ```
->GENOME_[taxon].[uce-label] [taxon] genome ultra conserved element [uce-label]
+>[taxon].genome.[uce-label] [taxon] genome ultra conserved element [uce-label]
 ```
 
 Here, the `taxon` label will be the name of the output fasta file, and the `uce-label` will be pulled
@@ -114,16 +114,16 @@ from the description lines. So, let's say the input fasta file that contained th
 is called `Gekko_japonicus.fasta`. The records above will be converted into the following:
 
 ```
->GENOME_Gekko_japonicus.uce-502 Gekko japonicus genome ultra conserved element uce-502
+>Gekko_japonicus.genome.uce-502 Gekko japonicus genome ultra conserved element uce-502
 CATTATTAGAGAGCTCTTTCTAGTAAGCCTTTAAAAAAAAAAAAAAAGAAAAAAAAGAAA...
 
->GENOME_Gekko_japonicus.uce-507 Gekko japonicus genome ultra conserved element uce-507
+>Gekko_japonicus.genome.uce-507 Gekko japonicus genome ultra conserved element uce-507
 TGTAATGTATTTCATGTTTAGCACCTATTTATTCCATGTAACTTCACCATATCAAATGAG...
 
->GENOME_Gekko_japonicus.uce-5821 Gekko japonicus genome ultra conserved element uce-5821
+>Gekko_japonicus.genome.uce-5821 Gekko japonicus genome ultra conserved element uce-5821
 CAGTTGCAAGACAAACATGTATGGGAGGCAGAATGGGGAGGGAAATTAAACACATCAAGA...
 
->GENOME_Gekko_japonicus.uce-4621 Gekko japonicus genome ultra conserved element uce-4621
+>Gekko_japonicus.genome.uce-4621 Gekko japonicus genome ultra conserved element uce-4621
 TTAGTGATATAGTTGATCATTGAATTCTGTCTTCTATATTAAATTAGAAGAATGTTTAAA...
 ```
 

@@ -14,12 +14,20 @@ def get_args():
     Full instructions for script usage are available at: 
     https://github.com/dportik/phyluce-genomes-to-supercrunch.
 	---------------------------------------------------------------------------""")
-    parser.add_argument("-i", "--in_dir", required=True, help="REQUIRED: The full path to a directory which contains the genome-extracted fasta files from Phyluce.")
-    parser.add_argument("-o", "--out_dir", required=True, help="REQUIRED: The full path to an existing directory to write output files.")
+    parser.add_argument("-i", "--indir",
+                            required=True,
+                            help="REQUIRED: The full path to a directory which "
+                            "contains the genome-extracted fasta files from Phyluce.")
+    
+    parser.add_argument("-o", "--outdir",
+                            required=True,
+                            help="REQUIRED: The full path to an existing directory "
+                            "to write output files.")
+    
     return parser.parse_args()
 
 def fasta_dict(f):
-    '''
+    """
     Function to convert a fasta file into
     dictionary structure with custom key name
     and sequence as value.
@@ -30,10 +38,10 @@ def fasta_dict(f):
     
     is converted into:
     
-    >GENOME_Alligator_mississippiensis.uce-502 Alligator mississippiensis ultra conserved element uce-502
-    '''
+    >Alligator_mississippiensis.genome.uce-502 Alligator mississippiensis genome ultra conserved element uce-502
+    """
     
-    print "\tProcessing {}...".format(f)
+    print("\tProcessing {}...".format(f))
     #get the name of the taxon, which is assumed to be
     #the fasta file name, e.g. 'Alligator_mississippiensis.fasta'
     taxon = f.split('.')[0]
@@ -52,46 +60,47 @@ def fasta_dict(f):
             uce = [l for l in line.split("|")][3].split(':')[1]
             #create new description line that fits the general structure:
             #>GENOME_[taxon].[uce-label] [taxon] genome ultra conserved element [uce-label]
-            new_key = ">GENOME_{0}.{1} {2} genome ultra conserved element {1}".format(taxon, uce, taxon.replace("_", " "))
+            new_key = ">{0}.genome.{1} {2} genome ultra conserved element {1}".format(taxon, uce, taxon.replace("_", " "))
             f_dict[new_key] = ""
         else:
             f_dict[new_key] += line.upper()
     return f_dict
 
 def write_fasta(d):
-    '''
+    """
     Simple function to iterate over each fasta dictionary
     and write the key, val pairs to the same output file.
-    '''
+    """
     outname = "Genome_UCE_Seqs.fasta"
     with open(outname, 'a') as fh:
-        for key, val in d.iteritems():
+        for key, val in d.items():
             fh.write("{}\n{}\n".format(key, val))
 
-def run_tasks(in_dir, out_dir):
-    '''
-    Function to navigate to correct directories to
-    either find fasta files and convert to dictionary
-    structures or write the final output file.
-    '''
-    os.chdir(in_dir)
-    f_list = sorted([f for f in os.listdir('.') if f.endswith(".fasta") or f.endswith(".fa")])
-    print "Found {} fasta files to process.".format(len(f_list))
+def run_tasks(indir, outdir):
+    """
+    Function to navigate to correct directory to
+    find fasta files and convert to dictionary
+    structures, then write the final output file.
+    """
+    os.chdir(indir)
+    flist = sorted([f for f in os.listdir('.') if f.endswith((".fasta", ".fa"))])
+    print("\nFound {} fasta files to process:\n".format(len(flist)))
     #list comprehension to generate a list of dictionaries using function fasta_dict()
     #each of which contains the contents of a particular fasta file
-    dict_list = [fasta_dict(f) for f in f_list]
-    os.chdir(out_dir)
-    print "Writing data to Genome_UCE_Seqs.fasta."
+    dict_list = [fasta_dict(f) for f in flist]
+    
+    os.chdir(outdir)
+    print("\nWriting data to Genome_UCE_Seqs.fasta.")
     for d in dict_list:
         write_fasta(d)
             
 def main():
     args = get_args()
     tb = datetime.now()
-    run_tasks(args.in_dir, args.out_dir)
+    run_tasks(args.indir, args.outdir)
     tf = datetime.now()
     te = tf - tb
-    print "\nFinished.\nElapsed time: {} (H:M:S)\n".format(te)
+    print("\nFinished.\nElapsed time: {} (H:M:S)\n".format(te))
 
 if __name__ == '__main__':
     main()
