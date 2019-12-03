@@ -150,6 +150,9 @@ python phyluce-genomes-to-supercrunch.py -i <input directory> -o <output directo
 
 > The full path to an existing directory to write the output files.
 
+##### `--cleanseqs`
+
+> Optional argument to remove all N characters from the sequences. In whole genomes, these are typically placeholder bases, but they will generally interfere with sequence alignment.
 
 #### Example Use:
 
