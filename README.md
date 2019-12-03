@@ -152,7 +152,7 @@ python phyluce-genomes-to-supercrunch.py -i <input directory> -o <output directo
 
 ##### `--cleanseqs`
 
-> Optional argument to remove all N characters from the sequences. In whole genomes, these are typically placeholder bases, but they will generally interfere with sequence alignment.
+> Optional argument to remove all N characters from the sequences. In whole genomes, these are typically placeholder bases, and if left in the sequences they will generally interfere with sequence alignment.
 
 #### Example Use:
 
