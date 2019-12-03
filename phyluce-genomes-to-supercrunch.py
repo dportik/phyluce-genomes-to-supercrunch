@@ -24,9 +24,15 @@ def get_args():
                             help="REQUIRED: The full path to an existing directory "
                             "to write output files.")
     
+    parser.add_argument("--cleanseqs",
+                            required=False,
+                            action='store_true',
+                            help="OPTIONAL: Strip placeholder N characters from all "
+                            "sequences (e.g., remove missing data).")
+    
     return parser.parse_args()
 
-def fasta_dict(f):
+def fasta_dict(f, cleanseqs):
     """
     Function to convert a fasta file into
     dictionary structure with custom key name
@@ -63,7 +69,10 @@ def fasta_dict(f):
             new_key = ">{0}.genome.{1} {2} genome ultra conserved element {1}".format(taxon, uce, taxon.replace("_", " "))
             f_dict[new_key] = ""
         else:
-            f_dict[new_key] += line.upper()
+            if cleanseqs:
+                f_dict[new_key] += line.upper().replace("N","")
+            else:
+                f_dict[new_key] += line.upper()
     return f_dict
 
 def write_fasta(d):
@@ -76,7 +85,7 @@ def write_fasta(d):
         for key, val in d.items():
             fh.write("{}\n{}\n".format(key, val))
 
-def run_tasks(indir, outdir):
+def run_tasks(indir, outdir, cleanseqs):
     """
     Function to navigate to correct directory to
     find fasta files and convert to dictionary
@@ -87,7 +96,7 @@ def run_tasks(indir, outdir):
     print("\nFound {} fasta files to process:\n".format(len(flist)))
     #list comprehension to generate a list of dictionaries using function fasta_dict()
     #each of which contains the contents of a particular fasta file
-    dict_list = [fasta_dict(f) for f in flist]
+    dict_list = [fasta_dict(f, cleanseqs) for f in flist]
     
     os.chdir(outdir)
     print("\nWriting data to Genome_UCE_Seqs.fasta.")
@@ -97,7 +106,7 @@ def run_tasks(indir, outdir):
 def main():
     args = get_args()
     tb = datetime.now()
-    run_tasks(args.indir, args.outdir)
+    run_tasks(args.indir, args.outdir, args.cleanseqs)
     tf = datetime.now()
     te = tf - tb
     print("\nFinished.\nElapsed time: {} (H:M:S)\n".format(te))
