@@ -168,7 +168,3 @@ called `21-genome-extractions.zip`. The output of running this script for these 
 in this folder, and is called `Genome_UCE_Seqs.fasta.zip`. You can test running this script on this example
 data set before using it for your own data.
 
-
-## Contact
-
-`phyluce-genomes-to-supercrunch.py` was written by Daniel Portik (daniel.portik@gmail.com)
